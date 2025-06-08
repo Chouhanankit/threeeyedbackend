@@ -11,6 +11,17 @@ const enquirySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+enquirySchema.virtual("formattedDate").get(function () {
+  const date = this.createdAt;
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+});
+
+enquirySchema.set("toJSON", { virtuals: true });
+enquirySchema.set("toObject", { virtuals: true });
+
 const Enquiry = mongoose.model("Enquiry", enquirySchema);
 
 module.exports = Enquiry;
