@@ -35,7 +35,7 @@ const mailsender = asyncHandler(async (req, res) => {
       </div>
       <h2 style="color: #EA7900;">New Enquiry Received</h2>
       <p style="margin-top: 10px; font-size: 16px;">A new enquiry has been submitted through your website contact form. Here are the details:</p>
-      <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+      <table style="width: auto; margin-top: 20px; border-collapse: collapse;">
         <tr><td style="padding: 10px; background-color: #f5f5f5; font-weight: bold;">Name:</td><td style="padding: 10px;">${name}</td></tr>
         <tr><td style="padding: 10px; background-color: #f5f5f5; font-weight: bold;">Email:</td><td style="padding: 10px;">${email}</td></tr>
         <tr><td style="padding: 10px; background-color: #f5f5f5; font-weight: bold;">Phone:</td><td style="padding: 10px;">${phone}</td></tr>
