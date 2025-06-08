@@ -62,8 +62,8 @@ const mailsender = asyncHandler(async (req, res) => {
 
     <!--Instagram Follow Section -->
     <div style="margin: 30px 0; text-align: center;">
-      <p style="font-size: 16px; margin-bottom: 10px;">Stay connected! Follow us on Instagram for updates, behind-the-scenes, and more:</p>
-      <a href="https://www.instagram.com/threeeyedlimilted" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #E1306C; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+      <p style="font-size: 14x; margin-bottom: 10px;">Stay connected! Follow us on Instagram for updates, behind-the-scenes, and more:</p>
+      <a href="https://www.instagram.com/threeeyedlimited" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #001F3D; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
         Follow @threeeyedlimited
       </a>
     </div>
@@ -94,7 +94,7 @@ const mailsender = asyncHandler(async (req, res) => {
     //  Send to User
     await transporter.sendMail({
       from: '"Three-Eyed Pvt. Ltd." <threeeyed.om@gmail.com>',
-      to: email,
+      replyTo: email,
       subject: `We've received your enquiry – Three-Eyed Pvt. Ltd.`,
       html: userHtml,
     });
