@@ -87,6 +87,7 @@ const mailsender = asyncHandler(async (req, res) => {
     await transporter.sendMail({
       from: '"Three-Eyed Pvt. Ltd." <threeeyed.om@gmail.com>',
       to: "threeeyed.om@gmail.com",
+      replyTo: email,
       subject: `New Enquiry: ${subject}`,
       html: teamHtml,
     });
@@ -94,11 +95,11 @@ const mailsender = asyncHandler(async (req, res) => {
     //  Send to User
     await transporter.sendMail({
       from: '"Three-Eyed Pvt. Ltd." <threeeyed.om@gmail.com>',
-      replyTo: email,
+      to: email,
+      replyTo: "threeeyed.om@gmail.com",
       subject: `We've received your enquiry – Three-Eyed Pvt. Ltd.`,
       html: userHtml,
     });
-
     res
       .status(200)
       .json({ message: "Enquiry successfully sent to our team.." });
