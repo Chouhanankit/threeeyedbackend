@@ -136,52 +136,40 @@ const MailSenderRec = asyncHandler(async (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
+    from: `"Three-Eyed Pvt. Ltd." <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_USER,
+    replyTo: email,
     subject: `Job Application - ${position}`,
     html: `
-      <table style="width: 60%; font-family: Arial, sans-serif; border-collapse: collapse;">
-        <tr>
-          <td style="padding: 20px; background-color: #f7f7f7;">
-            <h2 style="color: #EA7900;">New Team Application</h2>
-            <p>A new user has submitted the "Join Our Team" form:</p>
+    <table style="width: 60%; font-family: Arial, sans-serif; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 20px; background-color: #f7f7f7;">
+          <h2 style="color: #EA7900;">New Team Application</h2>
+          <p>A new user has submitted the "Join Our Team" form:</p>
 
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Name</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${firstName} ${lastName}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Email</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${email}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Phone</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${phone}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Position</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${position}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Skills</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${skills}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Employment Status</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">${employment_status}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px; border: 1px solid #ccc;"><strong>Resume</strong></td>
-                <td style="padding: 8px; border: 1px solid #ccc;">Attached: ${resumeFile.originalname}</td>
-              </tr>
-            </table>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Name</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${firstName} ${lastName}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Email</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${email}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Phone</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${phone}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Position</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${position}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Skills</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${skills}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Employment Status</strong></td><td style="padding: 8px; border: 1px solid #ccc;">${employment_status}</td></tr>
+            <tr><td style="padding: 8px; border: 1px solid #ccc;"><strong>Resume</strong></td><td style="padding: 8px; border: 1px solid #ccc;">Attached: ${resumeFile.originalname}</td></tr>
+          </table>
 
-            <p style="margin-top: 20px;">Best regards,<br><strong>The Join Team Bot</strong></p>
-          </td>
-        </tr>
-      </table>
-    `,
+          <!-- Instagram Follow Section -->
+          <div style="margin-top: 30px; text-align: center;">
+            <p style="font-size: 14px; margin-bottom: 10px;">Stay connected! Follow us on Instagram:</p>
+            <a href="https://www.instagram.com/threeeyedlimited" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #001F3D; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+              Follow @threeeyedlimited
+            </a>
+          </div>
+
+          <p style="margin-top: 30px;">Best regards,<br><strong>The Join Team Bot</strong></p>
+        </td>
+      </tr>
+    </table>
+  `,
     attachments: [
       {
         filename: resumeFile.originalname,
