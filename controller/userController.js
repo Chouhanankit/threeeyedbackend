@@ -27,7 +27,7 @@ const mailsender = asyncHandler(async (req, res) => {
     },
   });
 
-  // ✅ Internal Team Email Content
+  // Internal Team Email Content
   const teamHtml = `
     <div style="font-family: 'Segoe UI', sans-serif; padding: 20px; color: #333;">
       <div style="text-align: start; margin-bottom: 20px;">
@@ -47,22 +47,31 @@ const mailsender = asyncHandler(async (req, res) => {
     </div>
   `;
 
-  // ✅ Confirmation Email to User
+  // Confirmation Email to User
   const userHtml = `
-    <div style="font-family: 'Segoe UI', sans-serif; padding: 20px; color: #333;">
-      <div style="text-align: start; margin-bottom: 20px;">
-        <img src="https://ik.imagekit.io/mcyibc35n/2%20(1).png?updatedAt=1748161705033" alt="Three-Eyed Pvt. Ltd. Logo" style="max-width: 180px;" />
-      </div>
-      <h2 style="color: #EA7900;">Thank You for Contacting Us, ${name}!</h2>
-      <p style="margin-top: 10px; font-size: 16px;">
-        We’ve received your enquiry regarding <strong>"${subject}"</strong>.
-        <br /><br />
-        Our team will review your message and get back to you as soon as possible.
-      </p>
-      <hr style="margin: 30px 0;" />
-      <p style="font-size: 13px; color: #888;">This is a confirmation email from <strong>Three-Eyed Pvt. Ltd.</strong>.</p>
+  <div style="font-family: 'Segoe UI', sans-serif; padding: 20px; color: #333;">
+    <div style="text-align: start; margin-bottom: 20px;">
+      <img src="https://ik.imagekit.io/mcyibc35n/2%20(1).png?updatedAt=1748161705033" alt="Three-Eyed Pvt. Ltd. Logo" style="max-width: 180px;" />
     </div>
-  `;
+    <h2 style="color: #EA7900;">Thank You for Contacting Us, ${name}!</h2>
+    <p style="margin-top: 10px; font-size: 16px;">
+      We’ve received your enquiry regarding <strong>"${subject}"</strong>.
+      <br /><br />
+      Our team will review your message and get back to you as soon as possible.
+    </p>
+
+    <!--Instagram Follow Section -->
+    <div style="margin: 30px 0; text-align: center;">
+      <p style="font-size: 16px; margin-bottom: 10px;">Stay connected! Follow us on Instagram for updates, behind-the-scenes, and more:</p>
+      <a href="https://www.instagram.com/threeeyedlimilted" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #E1306C; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+        Follow @threeeyedlimited
+      </a>
+    </div>
+
+    <hr style="margin: 30px 0;" />
+    <p style="font-size: 13px; color: #888;">This is a confirmation email from <strong>Three-Eyed Pvt. Ltd.</strong>.</p>
+  </div>
+`;
 
   try {
     //  Save to MongoDB
